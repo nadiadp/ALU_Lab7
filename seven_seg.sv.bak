@@ -1,0 +1,20 @@
+module seven_seg(input logic on, input logic [3:0]D, output logic [6:0]S);
+
+	logic [15:0]B;
+
+ 
+	// 4:16 decoder
+	dec416sv decode(.activeHigh(on), .A(D), .Y(B));
+
+               
+	// active high seven segment display
+	assign S[0] = ~(B[0] | B[2] |B[3] | B[5] | B[6] | B[7]|B[8]|B[9]|B[10] | B[12] | B[14] | B[15]); //a
+	assign S[1] = ~(B[0] |B[1] |B[2] |B[3] |B[4] | B[7] |B[8] |B[9] |B[10] | B[13]);						//b
+	assign S[2] = ~(B[0] |B[1] | B[3] |B[4] |B[5] |B[6] |B[7] |B[8] |B[9] |B[10] |B[11] | B[13]);		//c
+	assign S[3] = ~(B[0] | B[2] |B[3] | B[5] |B[6] | B[8] | B[11] |B[12] |B[13] |B[14]);					//d
+	assign S[4] = ~(B[0] | B[2] | B[6] | B[8] | B[10] |B[11] |B[12] |B[13] |B[14] |B[15]);				//e
+	assign S[5] = ~(B[0] | B[4] |B[5] |B[6] | B[8] |B[9] |B[10] |B[11] |B[12] | B[14] |B[15]);			//f
+	assign S[6] = ~(B[2] |B[3] |B[4] |B[5] |B[6] |B[8] |B[9] |B[10] |B[11] |B[13] |B[14] |B[15]);    //g
+	
+
+endmodule

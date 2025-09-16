@@ -1,0 +1,15 @@
+module mult4(
+input logic [3:0]A,
+input logic [3:0]B,
+output logic [7:0]PP
+);
+
+logic [3:0]andgate;
+
+logic [4:0] layer1, layer2;
+
+
+ppcell row0(.input1(A), .B(B[1]), .PPin(), .PP(layer1);
+
+
+endmodule
