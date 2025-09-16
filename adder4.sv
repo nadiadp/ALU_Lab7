@@ -1,0 +1,34 @@
+module adder4(
+input logic [3:0]A, 
+input logic [3:0]B,
+input logic C0,
+output logic [3:0]S,
+output logic C4
+//output logic [6:0]seg_display, 
+//output logic negative
+);
+
+logic C1, C2, C3;
+
+logic [3:0]outB;
+
+//xor B with Cin 
+assign outB[0] = C0 ^ B[0];
+assign outB[1] = C0 ^ B[1];
+assign outB[2] = C0 ^ B[2];
+assign outB[3] = C0 ^ B[3];
+
+fulladder bit0(.A(A[0]), .B(outB[0]), .Cin(C0), .S(S[0]), .Cout(C1));
+fulladder bit1(.A(A[1]), .B(outB[1]), .Cin(C1), .S(S[1]), .Cout(C2));
+fulladder bit2(.A(A[2]), .B(outB[2]), .Cin(C2), .S(S[2]), .Cout(C3));
+fulladder bit3(.A(A[3]), .B(outB[3]), .Cin(C3), .S(S[3]), .Cout(C4));
+
+//always_comb
+//begin
+//	V = (C3 ^ C4);
+//end
+
+
+//displays sign and number on 7-segment display
+  
+endmodule

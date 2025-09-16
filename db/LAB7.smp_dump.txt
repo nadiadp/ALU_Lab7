@@ -1,0 +1,5 @@
+
+State Machine - |ALUcontroller|controller:_cont|current_step
+Name current_step.STEP1 
+current_step.STEP0 0 
+current_step.STEP1 1 
